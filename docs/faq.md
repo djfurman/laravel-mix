@@ -37,3 +37,7 @@ If you're running `npm run dev` through a VM, you may find that file changes are
 ### My manifest.json file shouldn't be in the project root.
 
 If you're not using Laravel, your `manifest.json` file will be dumped into the project root. If you need to change this, call `mix.setPublicPath('dist/');`, and your manifest file will now be saved in that base directory.
+
+### My project throws errors that it can't find `cross-env` or `webpack`
+
+If you haven't already, install `webpack@2.2.0-rc3` and/or `cross-env@3.1.3` or higher, globally.
