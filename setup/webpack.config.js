@@ -29,7 +29,7 @@ Mix.initialize();
  |
  */
 
-module.exports.context = Mix.paths.root();
+module.exports.context = Mix.Paths.root();
 
 
 /*
@@ -242,7 +242,10 @@ module.exports.plugins = (module.exports.plugins || []).concat([
 
     new plugins.FriendlyErrorsWebpackPlugin(),
 
-    new plugins.ManifestPlugin(),
+    new plugins.StatsWriterPlugin({
+        filename: "mix-manifest.json",
+        transform: Mix.manifest.transform,
+    }),
 
     new plugins.WebpackMd5HashPlugin(),
 
@@ -265,7 +268,7 @@ if (Mix.notifications) {
         new plugins.WebpackNotifierPlugin({
             title: 'Laravel Mix',
             alwaysNotify: true,
-            contentImage: 'node_modules/laravel-mix/icons/laravel.png'
+            contentImage: Mix.Paths.root('node_modules/laravel-mix/icons/laravel.png')
         })
     );
 }
